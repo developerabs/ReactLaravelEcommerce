@@ -5,6 +5,7 @@ import UserOnboard from "../Components/common/UserOnboard";
 import FooterDesktop from "../Components/common/FooterDesktop";
 import FooterMobile from "../Components/common/FooterMobile";
 import Contact from "../Components/common/Contact";
+import { ToastContainer, toast } from 'react-toastify';
 
 class ContactPage extends Component {
 
