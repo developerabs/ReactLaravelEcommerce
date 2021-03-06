@@ -4,197 +4,43 @@ class MegaMenu extends Component {
 
     constructor() {
         super();
-        this.MegaMenu=this.MegaMenu.bind(this);
     }
 
 
-    componentDidMount() {
-        this.MegaMenu();
-    }
-
-
-    MegaMenu(){
-      var acc= document.getElementsByClassName("accordion");
-      var accNum=acc.length;
-      var i;
-      for(i=0;i<accNum;i++){
-          acc[i].addEventListener("click",function () {
-             this.classList.toggle("active");
-             var panel=this.nextElementSibling;
-             if(panel.style.maxHeight){
-                 panel.style.maxHeight=null;
-             }
-             else{
-                 panel.style.maxHeight=panel.scrollHeight+ "px"
-             }
-          })
-      }
-
+    MenuItemClick=(event)=>{
+        event.target.classList.toggle("active");
+        let panel=event.target.nextElementSibling;
+        if(panel.style.maxHeight){
+            panel.style.maxHeight=null;
+        }
+        else{
+            panel.style.maxHeight=panel.scrollHeight+ "px"
+        }
     }
 
 
     render() {
+        const MyList = this.props.data;
+        const MyView = MyList.map((ParentList,i)=>{
+            return <div key={i,toString()}>
+                 <button onClick={this.MenuItemClick} className="accordion"> <img className="accordionMenuIcon" src={ParentList.ParentCategoryImg}/>{ParentList.ParentCategoryName}</button>
+                    <div className="panel">
+                        <ul>
+                            {
+                                (ParentList.SubCategory).map((ChildList,i)=>{
+                                    return <li key={i.toString()}><a href="#" className="accordionItem">{ChildList.cat2_name}</a></li>
+                                })
+                            }
+                        </ul>
+                    </div>
+            </div>
+        })
         return (
             <div className="accordionMenuDiv">
                 <div className="accordionMenuDivInside">
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
 
+                   {MyView}
 
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-
-                        </ul>
-                    </div>
-
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
-
-
-                    <button className="accordion"> <img className="accordionMenuIcon" src="Images/tshirt.87175310.svg"/>   Men's Clothing</button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                            <li><a href="#" className="accordionItem">Man Shirt</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         );
