@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/SendVisitorDetails',[VisitorController::class,'SendVisitorDetails']
 Route::post('/SendContactDetails',[ContactController::class,'SendContactDetails']);
 
 Route::get('/SendCategoryDetails',[CategoryController::class,'SendCategoryDetails']);
+Route::get('/ProductListByRemark/{remark}',[ProductListController::class,'ProductListByRemark']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
