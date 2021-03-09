@@ -29,7 +29,7 @@ class Homepage extends Component {
                 </div>
                 <div className="Mobile">
                     <NavMenuMobile/>
-                    <HomeTopMobile/>
+                    <HomeTopMobile/> 
                 </div>
 
                 <FeaturedProduct/>

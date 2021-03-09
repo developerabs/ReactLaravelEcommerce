@@ -10,6 +10,7 @@ class HomeTop extends Component {
         super();
         this.state = {
             MenuData:[],
+            SliderData:[]
         }
     }
     componentDidMount(){
@@ -18,6 +19,13 @@ class HomeTop extends Component {
         }).catch(error=>{
 
         })
+
+         // Slider Info
+         axios.get(ApiURL.SendSliderInfo).then(response=> {
+            this.setState({SliderData:response.data,isLoading:"d-none",MainDiv:" "})
+        }).catch(error=> {
+
+        });
     }
     render() {
         return (
@@ -28,7 +36,7 @@ class HomeTop extends Component {
                                 <MegaMenu data={this.state.MenuData}/>
                         </Col>
                         <Col className="p-0 m-0 overflow-hidden" lg={9} md={9} sm={12}>
-                                <SliderHome/>
+                                <SliderHome data={this.state.SliderData}/>
                         </Col>
                     </Row>
                 </Container>

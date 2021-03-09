@@ -6,6 +6,7 @@ use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/SendCategoryDetails',[CategoryController::class,'SendCategoryDetail
 Route::get('/ProductListByRemark/{remark}',[ProductListController::class,'ProductListByRemark']);
 Route::get('/ProductListByCategory/{Category}',[ProductListController::class,'ProductListByCategory']);
 Route::get('/ProductListBySubCategory/{Category}/{SubCategory}',[ProductListController::class,'ProductListBySubCategory']);
+Route::get('/SendSliderInfo',[SliderController::class,'SendSliderInfo']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
