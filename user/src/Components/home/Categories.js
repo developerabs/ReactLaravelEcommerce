@@ -1,5 +1,6 @@
 import React, {Component,Fragment} from 'react';
 import {Card, Col, Container, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import axios from 'axios';
 import ApiURL from "../../api/ApiURL";
 
@@ -22,10 +23,12 @@ class Categories extends Component {
         const MyView = MyList.map((ParentList,i)=>{
             return  <Col className="p-0" key={1} xl={2} lg={2} md={2} sm={4} xs={6} >
             <Card className="h-100 w-100 text-center">
+                <Link to={"ProductListByCategory/"+ParentList.ParentCategoryName}>
                 <Card.Body>
                     <img className="w-75"src={ParentList.ParentCategoryImg}/>
                     <h5 className="category-name">{ParentList.ParentCategoryName}</h5>
                 </Card.Body>
+                </Link>
             </Card>
         </Col>
         })

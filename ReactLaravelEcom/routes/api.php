@@ -23,6 +23,8 @@ Route::post('/SendContactDetails',[ContactController::class,'SendContactDetails'
 
 Route::get('/SendCategoryDetails',[CategoryController::class,'SendCategoryDetails']);
 Route::get('/ProductListByRemark/{remark}',[ProductListController::class,'ProductListByRemark']);
+Route::get('/ProductListByCategory/{Category}',[ProductListController::class,'ProductListByCategory']);
+Route::get('/ProductListBySubCategory/{Category}/{SubCategory}',[ProductListController::class,'ProductListBySubCategory']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

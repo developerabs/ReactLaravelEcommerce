@@ -10,6 +10,8 @@ import AboutPage from "../Pages/AboutPage";
 import ProductDetailsPage from "../Pages/ProductDetailsPage";
 import NotificationPage from "../Pages/NotificationPage";
 import FavouritePage from "../Pages/FavouritePage";
+import ProductListByCategory from "../Pages/ProductListByCategory";
+import ProductListBySubCategory from "../Pages/ProductListBySubCategory";
 
 class AppRoute extends Component {
     render() {
@@ -26,6 +28,8 @@ class AppRoute extends Component {
                     <Route exact path="/productDetails" component={ProductDetailsPage}/>
                     <Route exact path="/notification" component={NotificationPage}/>
                     <Route exact path="/favourite" component={FavouritePage}/>
+                    <Route exact path="/ProductListByCategory/:Category" render={(props) => <ProductListByCategory {...props} key={Date.now()}/>}/>
+                    <Route exact path="/ProductListBySubCategory/:Category/:SubCategory" render={(props) => <ProductListBySubCategory {...props} key={Date.now()}/>}/>
                </Switch>
            </Fragment>
         );
