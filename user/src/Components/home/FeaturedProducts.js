@@ -3,17 +3,20 @@ import React, {Component,Fragment} from 'react';
 import {Container,Row,Col,Card} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import ApiURL from '../../api/ApiURL';
+import FeaturedProductLoader from '../placeholder/FeaturedProductLoader';
 
 class FeaturedProducts extends Component {
     constructor(){
         super();
         this.state={
-            ProductData:[]
+            ProductData:[],
+            isLoading:"TopSection",
+            MainDiv:"d-none"
         }
     }
     componentDidMount(){
         axios.get(ApiURL.ProductListByRemark('FEATURED')).then(response=>{
-           this.setState({ProductData:response.data});
+           this.setState({ProductData:response.data,isLoading:"d-none",MainDiv:" "});
         }).catch()
     }
     render() {
@@ -35,6 +38,8 @@ class FeaturedProducts extends Component {
         })
         return (
             <Fragment>
+                <FeaturedProductLoader isLoading={this.state.isLoading} />
+                <div className={this.state.MainDiv}>
                     <Container className="text-center BetweenTwoSection" fluid={true}>
                         <h4 className="section-title">FEATURED PRODUCTS</h4>
                         <h6 className="section-sub-title pb-3">Some Of Our Exclusive Collection, You May Like</h6>
@@ -42,7 +47,7 @@ class FeaturedProducts extends Component {
                             {MyView}
                         </Row>
                     </Container>
-
+                </div>
             </Fragment>
         );
     }

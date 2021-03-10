@@ -3,17 +3,20 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import ApiURL from '../../api/ApiURL';
+import SpecialCollectionPlaceholder from '../placeholder/SpecialCollectionPlaceholder';
 
 class Collection extends Component {
     constructor(){
         super();
         this.state={
-            ProductData:[]
+            ProductData:[],
+            isLoading:"TopSection",
+            MainDiv:"d-none"
         }
     }
     componentDidMount(){
         axios.get(ApiURL.ProductListByRemark('SPECIAL')).then(response=>{
-           this.setState({ProductData:response.data});
+           this.setState({ProductData:response.data,isLoading:"d-none",MainDiv:" "});
         }).catch()
     }
     render() {
@@ -36,16 +39,17 @@ class Collection extends Component {
         })
         return (
             <Fragment>
-                <Container  className="text-center bg-white card-body shadow-sm py-5 BetweenTwoSection" fluid={true}>
-                    <h4 className="section-title ">SPECIAL COLLECTION</h4>
-                    <h6 className="section-sub-title pb-3">Some Of Our Exclusive Collection, You May Like</h6>
-                    <Row >
-                        {MyView}
+                <SpecialCollectionPlaceholder isLoading={this.state.isLoading} />
+                <div className={this.state.MainDiv}>
+                    <Container  className="text-center bg-white card-body shadow-sm py-5 BetweenTwoSection" fluid={true}>
+                        <h4 className="section-title ">SPECIAL COLLECTION</h4>
+                        <h6 className="section-sub-title pb-3">Some Of Our Exclusive Collection, You May Like</h6>
+                        <Row >
+                            {MyView}
 
-                    </Row>
-                </Container>
-
-
+                        </Row>
+                    </Container>
+                </div>
             </Fragment>
         );
     }
